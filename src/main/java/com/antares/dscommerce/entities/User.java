@@ -87,4 +87,10 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public List<Order> getOrder() {
+        return order;
+    }
+
+    
 }
