@@ -12,8 +12,7 @@ import jakarta.persistence.Table;
 @Table(name = "tb_order_item")
 public class OrderItem {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
     @EmbeddedId
     private OrdemItemPk id = new OrdemItemPk();
 
