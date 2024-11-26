@@ -20,17 +20,11 @@ public class ProductController {
 	@Autowired
    private ProductRepository repository;
 	@GetMapping
-	public String teste() {
-		Optional<Product> result = repository.findById(1L);
+	public String Bacalhau() {
+		Optional<Product> result = repository.findById(2L);
 		Product product = result.get();
 		
 		return product.getName();
-	}
-
-   
-
-    
-
-    
+	}   
 
 }
