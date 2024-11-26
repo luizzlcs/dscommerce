@@ -1,30 +1,26 @@
 package com.antares.dscommerce.controller;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.antares.dscommerce.entities.Product;
-import com.antares.dscommerce.repositories.ProductRepository;
-
-
-
+import com.antares.dscommerce.dto.ProductDTO;
+import com.antares.dscommerce.services.ProductServices;
 
 @RestController
 @RequestMapping(value = "/products")
 public class ProductController {
-	
+
 	@Autowired
-   private ProductRepository repository;
-	@GetMapping
-	public String Bacalhau() {
-		Optional<Product> result = repository.findById(2L);
-		Product product = result.get();
-		
-		return product.getName();
-	}   
+	private ProductServices services;
+
+	@GetMapping(value = "/{id}")
+	public ProductDTO findById(@PathVariable Long id) {
+		ProductDTO dto = services.findById(id);
+
+		return dto;
+	}
 
 }
