@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.antares.dscommerce.dto.ProductDTO;
 import com.antares.dscommerce.entities.Product;
 import com.antares.dscommerce.repositories.ProductRepository;
+import com.antares.dscommerce.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class ProductServices {
@@ -21,7 +22,8 @@ public class ProductServices {
     @Transactional(readOnly = true)
     public ProductDTO findById(Long id) {
         Optional<Product> result = repository.findById(id);
-        Product product = result.get();
+        Product product = result.orElseThrow(
+                () -> new ResourceNotFoundException("Recurso não encontrado"));
         ProductDTO dto = new ProductDTO(product);
         return dto;
     }
