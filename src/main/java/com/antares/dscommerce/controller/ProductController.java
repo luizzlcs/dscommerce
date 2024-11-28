@@ -19,6 +19,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.antares.dscommerce.dto.ProductDTO;
 import com.antares.dscommerce.services.ProductServices;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/products")
 public class ProductController {
@@ -41,7 +43,7 @@ public class ProductController {
 	}
 
 	@PostMapping
-	public ResponseEntity<ProductDTO> insert(@RequestBody ProductDTO dto) {
+	public ResponseEntity<ProductDTO> insert(@Valid @RequestBody ProductDTO dto) {
 		dto = services.insert(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{if}")
 				.buildAndExpand(dto.getId()).toUri();
@@ -49,11 +51,11 @@ public class ProductController {
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<ProductDTO> update(@PathVariable Long id, @RequestBody ProductDTO dto) {
-
-		dto = services.update(id, dto);
-
-		return ResponseEntity.ok(dto);
+	public ResponseEntity<ProductDTO> update(@PathVariable Long id, @Valid @RequestBody ProductDTO dto) {
+					
+			dto = services.update(id, dto);	
+			return ResponseEntity.ok(dto);
+		
 	}
 
 	@DeleteMapping(value = "/{id}")
