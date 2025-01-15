@@ -9,8 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import com.antares.dscommerce.dto.ProductDTO;
 import com.antares.dscommerce.entities.Product;
 import com.antares.dscommerce.repositories.ProductRepository;
