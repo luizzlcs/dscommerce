@@ -60,6 +60,15 @@ public class User implements UserDetails {
 
     }
 
+    public boolean hasRole(String roleName) {
+        for (Role role : roles) {
+            if (role.getAuthority().equals(roleName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public Long getId() {
         return id;
     }
@@ -110,6 +119,10 @@ public class User implements UserDetails {
 
     public List<Order> getOrder() {
         return order;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
     }
 
     @Override
@@ -166,5 +179,4 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
 }
