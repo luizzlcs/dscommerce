@@ -37,6 +37,7 @@ public class Role implements GrantedAuthority {
         return id;
     }
 
+    @Override
     public String getAuthority() {
         return authority;
     }
@@ -64,9 +65,5 @@ public class Role implements GrantedAuthority {
         } else if (!authority.equals(other.authority))
             return false;
         return true;
-    }
-
-       
-
-    
+    }   
 }
