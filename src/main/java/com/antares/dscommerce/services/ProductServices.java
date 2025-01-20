@@ -9,8 +9,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.antares.dscommerce.dto.CategoryDTO;
 import com.antares.dscommerce.dto.ProductDTO;
 import com.antares.dscommerce.dto.ProductMinDTO;
+import com.antares.dscommerce.entities.Category;
 import com.antares.dscommerce.entities.Product;
 import com.antares.dscommerce.repositories.ProductRepository;
 import com.antares.dscommerce.services.exceptions.ResourceNotFoundException;
@@ -80,6 +83,12 @@ public class ProductServices {
         entity.setDescription(dto.getDescription());
         entity.setPrice(dto.getPrice());
         entity.setImgUrl(dto.getImgUrl());
+        entity.getCategories().clear(); //Limpa as categorias
+        for(CategoryDTO catDTO: dto.getCategories()){
+            Category cat = new Category();
+            cat.setId(catDTO.getId());
+            entity.getCategories().add(cat);
+        }
     }
 
 }
