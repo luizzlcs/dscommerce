@@ -11,7 +11,7 @@ public class OrderItem {
 
     
     @EmbeddedId
-    private OrdemItemPk id = new OrdemItemPk();
+    private OrderItemPk id = new OrderItemPk();
 
     private Integer quantity;
     private Double price;

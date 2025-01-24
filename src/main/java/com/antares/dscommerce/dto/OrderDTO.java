@@ -8,12 +8,16 @@ import com.antares.dscommerce.entities.Order;
 import com.antares.dscommerce.entities.OrderItem;
 import com.antares.dscommerce.entities.OrderStatus;
 
+import jakarta.validation.constraints.NotEmpty;
+
 public class OrderDTO {
     private Long id;
     private Instant moment;
     private OrderStatus status;
     private ClientDTO client;
     private PaymentDTO pyment;
+
+    @NotEmpty(message = "Deve ter pelo menos um item")
     private List<OrderItemDTO> items = new ArrayList<>();
     
     public OrderDTO(Long id, Instant moment, OrderStatus status, ClientDTO client, PaymentDTO pyment) {
