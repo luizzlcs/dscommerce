@@ -36,7 +36,7 @@ public class OrderItem {
     }
 
     public Product geProduct() {
-        return geProduct();
+        return id.getProduct();
     }
 
     public void setProduct(Product product) {
